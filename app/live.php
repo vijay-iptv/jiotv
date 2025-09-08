@@ -14,20 +14,9 @@ header("Access-Control-Allow-Headers: Range");
 header("Accept-Ranges: bytes");
 
 // Server configuration
-$protocol = ($_SERVER['HTTPS'] ?? '') === 'on' ? 'https://' : 'http://';
-$host_jio = in_array($_SERVER['SERVER_ADDR'], ['127.0.0.1', 'localhost'])
-    ? getHostByName(php_uname('n'))
-    : $_SERVER['HTTP_HOST'];
-
-$host_jio .= str_contains($host_jio, $_SERVER['SERVER_PORT'])
-    ? '' : ':' . $_SERVER['SERVER_PORT'];
-
-$jio_path = rtrim(sprintf(
-    '%s%s%s',
-    $protocol,
-    $host_jio,
-    str_replace(' ', '%20', dirname($_SERVER['PHP_SELF']))
-), '/');
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
+$host_jio = $_SERVER['HTTP_HOST'];
+$jio_path = rtrim($protocol . $host_jio . dirname($_SERVER['PHP_SELF']), '/');
 
 // API request setup
 $id = htmlspecialchars($_REQUEST['id'] ?? '');
