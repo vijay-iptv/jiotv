@@ -6,6 +6,8 @@
 
 $DATA_FOLDER = __DIR__ . "/app/assets/data";
 
+echo $DATA_FOLDER;exit;
+
 function getCRED()
 {
   global $DATA_FOLDER;
