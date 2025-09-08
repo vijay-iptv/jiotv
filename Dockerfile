@@ -4,7 +4,7 @@ FROM php:8.2-apache
 WORKDIR /var/www/html
 
 # Copy app files
-COPY ./public/ /var/www/html/
+COPY ./ /var/www/html/
 
 # Apache expects to run on port 10000 on Render
 RUN sed -i 's/80/10000/' /etc/apache2/ports.conf && \
