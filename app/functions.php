@@ -9,7 +9,7 @@ $config = parse_ini_file('../config.ini', true);
 $PROXY = $config['settings']['proxy'] ?? null;
 
 // Constants
-define('DATA_FOLDER', 'assets/data');
+define('DATA_FOLDER', '/var/www/html/app/assets/data');
 define('TOKEN_EXPIRY_TIME', 7000);
 define('COOKIE_EXPIRY_TIME', 40000);
 
