@@ -6,11 +6,16 @@ WORKDIR /var/www/html
 # Copy app files
 COPY ./ /var/www/html/
 
-# Apache expects to run on port 10000 on Render
-RUN sed -i 's/80/10000/' /etc/apache2/ports.conf && \
-    sed -i 's/80/10000/' /etc/apache2/sites-available/000-default.conf
-
-EXPOSE 10000
+# Ensure data folder exists and is writable
+RUN mkdir -p /var/www/html/assets/data \
+    && chown -R www-data:www-data /var/www/html/assets/data \
+    && chmod -R 777 /var/www/html/assets/data
 
 # Enable mod_rewrite if needed
 RUN a2enmod rewrite
+
+# Optional: expose default Apache port
+EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]
