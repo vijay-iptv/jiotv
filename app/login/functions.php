@@ -4,9 +4,8 @@
 // * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 // * Created By : TechieSneh
 
-$DATA_FOLDER = __DIR__ . "/app/assets/data";
+$DATA_FOLDER = "/var/www/html/app/assets/data";
 
-echo $DATA_FOLDER;exit;
 
 function getCRED()
 {
