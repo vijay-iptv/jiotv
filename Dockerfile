@@ -15,7 +15,7 @@ RUN mkdir -p /var/www/html/app/assets/data \
 RUN a2enmod rewrite
 
 # Allow .htaccess overrides
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+RUN sed -i '/<Directory \/var\/www\/html>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 # Expose HTTP port
 EXPOSE 80
